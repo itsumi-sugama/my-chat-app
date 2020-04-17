@@ -1,0 +1,36 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>chat-app</title>
+    <link rel="stylesheet" href="stylesheet/css">
+    <script src ="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <main id="chat">
+      <ul v-for="message in messages">
+        <li>{{message}}</li>
+      </ul>
+      <div class="form">
+        <input v-model="chatMessage">
+        <button v-on:click="postMessage">送信</button>
+      </div>
+    </main>
+  </body>
+  <script>
+    var socket = io();
+    var app =new Vue({
+      el:'#chat'
+      data:{
+        chatMessage:'',
+        messages:[]
+      },
+      methods:{
+        //  送信ボタンが押されたら、クライアントからサーバーにメッセージを送信
+      },
+    })
+    // サーバーがメッセージをemitしたら、クライアント側のリストにメッセージを追加する
+    // 元々あるメッセージを表示する
+  </script>
+</html>

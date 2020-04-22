@@ -7,7 +7,11 @@
     <script src ="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="/socket.io/socket.io.js"></script>
   </head>
-  <body>
+ <body>
+    <header>
+      <h2>サンプルチャットアプリ</h2>
+    </header>
+    <hr>
     <main id="chat">
       <ul v-for="message in messages">
         <li>{{message}}</li>

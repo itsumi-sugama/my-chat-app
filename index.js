@@ -14,3 +14,17 @@ app.get('/', (req,res) => {
 http.listen(port) => {
   console.log('listening on *:' + port)
 }
+
+var messages = [];
+
+io.on('connection', function(socket){
+
+  // サーバー側のメッセージリストをクライアント側に送る（emit）
+  socket.emit('init-chat', messages);
+  // クライアント側から送られたメッセージを受け取り、全クライアントに送る（emit）
+  socket.on('c2s-msg', function(msg) {
+      var newMessage = msg;
+      messages.push(newMessage);
+      io.emit('s2c-msg', newMessage);
+  });
+});
